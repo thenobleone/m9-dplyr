@@ -9,35 +9,26 @@ install.packages('devtools')
 devtools::install_github("hadley/fueleconomy")
 
 # Require/library the fueleconomy package
-<<<<<<< Updated upstream
-require(fueleconomy)
-
-# Which Accura model has the best hwy MPG in 2015? (without method chaining)
-best.acura <- filter(vehicles,make == 'Acura', year == 2015) %>% filter(hwy == max(hwy)) %>% select(model)
-=======
-<<<<<<< .merge_file_9k0jTM
 library(fueleconomy)
 
 # You should have have access to the vehicles data.frame
 View(vehicles)
 
 # Which Accura model has the best hwy MPG in 2015? (without method chaining)
-acuras <- filter(vehicles, make == 'Acura', year == 2015)
-best.acura <- filter(acuras, hwy == max(hwy))
-best.model <- select(best.acura, model)
-=======
-require(fueleconomy)
-
-# Which Accura model has the best hwy MPG in 2015? (without method chaining)
-best.acura <- filter(vehicles,make == 'Acura', year == 2015) %>% filter(hwy == max(hwy)) %>% select(model)
->>>>>>> .merge_file_aZvjlZ
->>>>>>> Stashed changes
+acuras <- filter(vehicles, make == 'Acura')
+acruas.2015 <- filter (acuras, year == 2015)
+best.acura.info <- filter(acruas.2015, hwy == max(hwy))
+best.acura.model <- select(best.acura.info, model)
 
 # Which Accura model has the best hwy MPG in 2015? (nesting functions)
+acura.chain <- filter(vehicles, make == 'Acura', year == 2015)
+best.acura.chain <- select(filter (acura.chain, hwy == max(hwy)), model)
 
 
 # Which Accura model has the best hwy MPG in 2015? (pipe operator)
-
+best.acura.pipe <- filter(vehicles,make == 'Acura', year == 2015) %>% 
+  filter(hwy == max(hwy)) %>% 
+  select(model)
 
 ### Bonus ###
 
